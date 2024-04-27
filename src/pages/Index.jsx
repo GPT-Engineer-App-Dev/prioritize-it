@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Box, Button, Input, List, ListItem, IconButton, Text } from '@chakra-ui/react';
 import { FaPlus, FaTrash, FaCheck } from 'react-icons/fa';
+import { Link } from 'react-router-dom';
 
 const Index = () => {
   const [tasks, setTasks] = useState([]);
@@ -69,6 +70,9 @@ const Index = () => {
           </ListItem>
         ))}
       </List>
+      <Link to="/about" style={{ marginTop: '20px', display: 'block', textAlign: 'center' }}>
+        <Button colorScheme="teal">About This App</Button>
+      </Link>
     </Box>
   );
 };
