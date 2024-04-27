@@ -73,6 +73,9 @@ const Index = () => {
       <Link to="/about" style={{ marginTop: '20px', display: 'block', textAlign: 'center' }}>
         <Button colorScheme="teal">About This App</Button>
       </Link>
+      <Link to="/gallery" style={{ marginTop: '10px', display: 'block', textAlign: 'center' }}>
+        <Button colorScheme="purple">Gallery</Button>
+      </Link>
     </Box>
   );
 };
