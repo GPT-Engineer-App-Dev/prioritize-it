@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Box, Button, Input, List, ListItem, IconButton, Text, Link } from '@chakra-ui/react';
+import { Box, Button, Input, List, ListItem, IconButton, Text } from '@chakra-ui/react';
 import { FaPlus, FaTrash, FaCheck } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 
