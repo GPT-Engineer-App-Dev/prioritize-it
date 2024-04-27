@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Box, Button, Input, Image, SimpleGrid, useToast } from '@chakra-ui/react';
 
 const Gallery = () => {
@@ -6,10 +6,18 @@ const Gallery = () => {
   const [imageURL, setImageURL] = useState('');
   const toast = useToast();
 
+  useEffect(() => {
+    const savedImages = JSON.parse(localStorage.getItem('images'));
+    if (savedImages) {
+      setImages(savedImages);
+    }
+  }, []);
+
   const handleAddImage = () => {
     if (imageURL.trim() !== '') {
       const newImages = [...images, imageURL];
       setImages(newImages);
+      localStorage.setItem('images', JSON.stringify(newImages));
       setImageURL('');
       toast({
         title: 'Image added.',
