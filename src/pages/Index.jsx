@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Box, Button, Input, List, ListItem, IconButton, Text } from '@chakra-ui/react';
 import { FaPlus, FaTrash, FaCheck } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
@@ -11,6 +11,7 @@ const Index = () => {
     if (input.trim() !== '') {
       const newTasks = [...tasks, { id: Date.now(), text: input, isCompleted: false }];
       setTasks(newTasks);
+      localStorage.setItem('tasks', JSON.stringify(newTasks));
       setInput('');
     }
   };
@@ -18,6 +19,7 @@ const Index = () => {
   const handleDeleteTask = (id) => {
     const filteredTasks = tasks.filter(task => task.id !== id);
     setTasks(filteredTasks);
+    localStorage.setItem('tasks', JSON.stringify(filteredTasks));
   };
 
   const handleCompleteTask = (id) => {
@@ -28,7 +30,15 @@ const Index = () => {
       return task;
     });
     setTasks(updatedTasks);
+    localStorage.setItem('tasks', JSON.stringify(updatedTasks));
   };
+
+  useEffect(() => {
+    const savedTasks = JSON.parse(localStorage.getItem('tasks'));
+    if (savedTasks) {
+      setTasks(savedTasks);
+    }
+  }, []);
 
   return (
     <Box p={5} maxW="480px" m="auto" mt="20vh" bg="white" boxShadow="md">
